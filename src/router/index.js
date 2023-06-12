@@ -5,7 +5,7 @@ import { useAuthStore } from '@/store/auth';
 const routes = [
   {
     name:'Login',
-    path: '/',
+    path: '/login',
     component: () => import('@/views/LoginView.vue'),
   },
   {
@@ -14,9 +14,20 @@ const routes = [
     component: () => import('@/views/RegisterView.vue'),
   },
   {
-    name: 'Home',
-    path: '/home',
-    component: () => import('@/views/HomeView.vue'),
+  path: '/',
+  component: () => import('@/layouts/default/Default.vue'),
+  children: [
+    {
+      name: 'Home',
+      path: '/home',
+      component: () => import('@/views/HomeView.vue'),
+    },
+    {
+      path: '/cadastro_filmes',
+      name: 'CadastroFilme',
+      component: () => import('@/views/CadFilme.vue'),
+    }
+  ],
   }
 ]
 

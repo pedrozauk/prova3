@@ -37,6 +37,14 @@ export const useAuthStore = defineStore('auth', {
       }
       router.push("/home");
      },
+     async logOut(){
+      try{
+        await signOut();
+        this.dadosUser = null;
+      } catch(error){
+        console.error(error);
+      }
+     }
 },
   getters:{
     getUser(state){

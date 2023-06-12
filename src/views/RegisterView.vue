@@ -24,7 +24,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn @click="newUser">Confirmar</v-btn>
-                    <v-btn @click="$router.push('/')">Voltar</v-btn>
+                    <v-btn @click="$router.push('/login')">Voltar</v-btn>
                 </v-card-actions>
             </v-form>
         </v-card-text>
