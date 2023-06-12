@@ -1,7 +1,6 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/store/auth';
-import { onAuthStateChanged } from 'firebase/auth';
 
 const routes = [
   {
@@ -18,7 +17,6 @@ const routes = [
     name: 'Home',
     path: '/home',
     component: () => import('@/views/HomeView.vue'),
-    meta: { requiresAuth: true },
   }
 ]
 

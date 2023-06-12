@@ -10,7 +10,9 @@ import App from './App.vue'
 // Composables
 import { createApp } from 'vue'
 
-// Plugins
+// Pluginsimport axios from 'axios'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import { registerPlugins } from '@/plugins'
 
 import { initializeApp } from "firebase/app";
@@ -59,5 +61,5 @@ setPersistence(auth,browserLocalPersistence)
     })
     
   })
-
+app.use(VueAxios, axios)
 app.mount('#app');
