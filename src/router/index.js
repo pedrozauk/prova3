@@ -28,15 +28,25 @@ const routes = [
       component: () => import('@/views/CadFilme.vue'),
     }
   ],
+  meta:{requiresAuth: true},
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
-})
+routes,
+});
 
-;
+router.beforeEach((to,from,next)=>{
+  const authStore = useAuthStore();
+  const requiresAuth = to.matched.some((record)=>record.meta.requiresAuth);
+  
+  if (requiresAuth && !authStore.dadosUser){
+    next({name:"Login"});
+  }else{
+    next();
+  }
 
+});
 
 export default router

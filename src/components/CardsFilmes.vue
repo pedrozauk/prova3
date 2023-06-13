@@ -17,6 +17,9 @@
             <br>
             Sinopse:
             {{ filme.sinopse }}
+            <br>
+            Capa: 
+            {{ filme.capaFilme }}
         </v-card-text>
     </v-card>
 </template>

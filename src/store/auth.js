@@ -6,6 +6,8 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut,
+    GoogleAuthProvider,
+    signInWithPopup
   } from "firebase/auth";
 import router from '@/router';
 
@@ -37,10 +39,25 @@ export const useAuthStore = defineStore('auth', {
       }
       router.push("/home");
      },
+     async loginGoogle(){
+      const provider = new GoogleAuthProvider();
+      try{
+        const {user} = await signInWithPopup(getAuth(), provider);
+        this.dadosUser = user;
+        console.log("logou");
+        router.push('/home')
+      }catch(error){
+        console.error(error);
+      }
+     },
      async logOut(){
       try{
-        await signOut();
+        const auth = getAuth();
+        await signOut(auth);
         this.dadosUser = null;
+        auth.clearAuthState();
+        router.push('/login');
+        
       } catch(error){
         console.error(error);
       }

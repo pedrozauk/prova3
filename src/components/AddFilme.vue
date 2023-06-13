@@ -11,6 +11,7 @@
             <v-text-field v-model="form.genero" variant="outlined" label="Genero" required></v-text-field>
             <v-text-field v-model="form.diretor" variant="outlined" label="Diretor" required></v-text-field>
             <v-textarea v-model="form.sinopse" variant="outlined" label="Sinopse" required></v-textarea>
+            <v-file-input label="Capa do Filme"  @change="carregaImagem" accept="image/png, image/jpeg, image/bmp"></v-file-input>
             <v-btn color="success"  @click="cadastrar">Cadastrar</v-btn>
         </v-form>
     </v-card-text>
@@ -28,6 +29,7 @@ export default{
                 genero: '',
                 diretor: '',
                 sinopse: '',
+                capaFilme: null
             },
             tituloRules: 
             [
@@ -51,8 +53,13 @@ export default{
                 genero: '',
                 diretor: '',
                 sinopse: '',
+                capaFilme: null
             }
-        }
+        },
+        carregaImagem(event){
+            const file = event.target.files[0];
+            this.form.capaFilme =  file
+        },
     }
 }
 </script>

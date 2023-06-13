@@ -51,11 +51,12 @@ setPersistence(auth,browserLocalPersistence)
         console.log(authStore.getUser)
         if (router.currentRoute.value.path !== '/home') {
           console.log("Já está logado")
+          router.push('/home');
         }
       }
       else{
         if (router.currentRoute.value.path !== '/') {
-          router.push('/');
+          router.push('/login');
         }
       }
     })

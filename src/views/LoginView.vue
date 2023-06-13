@@ -23,8 +23,10 @@
                 ></v-text-field>   
                 <v-card-actions>
                     <v-spacer></v-spacer>
+                    <v-btn prepend-icon="mdi-google" @click="loginComGoogle">Entrar com o Google</v-btn>
                     <v-btn @click="login">Entrar</v-btn>
                     <v-btn color="info" @click="$router.push('/register')">Cadastrar</v-btn>
+                   
                 </v-card-actions>
             </v-form>
         </v-card-text>
@@ -42,7 +44,9 @@ const authStore = useAuthStore()
 const login = ()=>{
     authStore.loginUser(email.value, password.value)
 }
-
+const loginComGoogle = ()=>{
+    authStore.loginGoogle();
+}
 authStore.loginUser
 
 </script>
